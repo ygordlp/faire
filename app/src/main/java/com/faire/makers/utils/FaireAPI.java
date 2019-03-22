@@ -2,6 +2,7 @@ package com.faire.makers.utils;
 
 import android.util.Log;
 
+import com.faire.makers.model.Brand;
 import com.faire.makers.model.Category;
 import com.google.gson.Gson;
 
@@ -47,6 +48,30 @@ public class FaireAPI {
                 if (body != null) {
                     Category[] categories  = gson.fromJson(body, Category[].class);
                     result = Arrays.asList(categories);
+                }
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error loading categories: " + e.getMessage());
+            result = new ArrayList<>();
+        }
+
+        Log.d(TAG, "Categories found: " + result.size());
+
+        return result;
+    }
+
+    public List<Brand> searchForMakers(String search){
+        List<Brand> result = null;
+        try {
+            Request request = new Request.Builder().url(CATEGORIES_URL).build();
+            Call call = okHttpClient.newCall(request);
+            Response response = call.execute();
+
+            if (response.isSuccessful()) {
+                String body = response.body().string();
+                if (body != null) {
+                    //TODO: GET MAKERS
                 }
             }
 

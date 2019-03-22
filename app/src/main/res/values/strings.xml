@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Faire</string>
     <string name="lbl_not_set">NOT SET</string>
+    <string name="lbl_categories">Categories</string>
 </resources>

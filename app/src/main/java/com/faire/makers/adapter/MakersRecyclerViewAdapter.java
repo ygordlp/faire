@@ -2,35 +2,35 @@ package com.faire.makers.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.faire.makers.R;
-import com.faire.makers.model.Category;
+import com.faire.makers.model.Brand;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MakersRecyclerViewAdapter extends RecyclerView.Adapter<MakersRecyclerViewAdapter.ViewHolder> {
 
-    public  interface OnCategorySelectedListner {
-        void onCategorySelected(Category category);
+    public interface OnMakerSelectedListner {
+        void onCategorySelected(Brand brand);
     }
-    private List<Category> categories = new ArrayList<>();
-    private OnCategorySelectedListner listener;
 
-    public MakersRecyclerViewAdapter(@NonNull OnCategorySelectedListner listener) {
+    private List<Brand> makers = new ArrayList<>();
+    private OnMakerSelectedListner listener;
+
+    public MakersRecyclerViewAdapter(@NonNull OnMakerSelectedListner listener) {
         this.listener = listener;
     }
 
-    public void setCategories(List<Category> categories) {
-        if(categories == null) {
-            this.categories = new ArrayList<>();
+    public void setMakers(List<Brand> makers) {
+        if (makers == null) {
+            this.makers = new ArrayList<>();
         } else {
-            this.categories = categories;
+            this.makers = makers;
         }
 
         notifyDataSetChanged();
@@ -40,34 +40,34 @@ public class MakersRecyclerViewAdapter extends RecyclerView.Adapter<MakersRecycl
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.category_item, viewGroup, false);
+                .inflate(R.layout.maker_item, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.category = categories.get(i);
+        viewHolder.brand = makers.get(i);
         viewHolder.updateUI();
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return makers.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private Category category;
-        private TextView txtCategory;
+        private Brand brand;
+        private TextView txtName;
 
         private ViewHolder(View view) {
             super(view);
-            txtCategory = view.findViewById(R.id.txtCategory);
-            view.setOnClickListener(v -> listener.onCategorySelected(category));
+            txtName = view.findViewById(R.id.txtName);
+            view.setOnClickListener(v -> listener.onCategorySelected(brand));
         }
 
-        void updateUI(){
-            txtCategory.setText(category.name);
+        void updateUI() {
+            txtName.setText(brand.name);
         }
 
     }
