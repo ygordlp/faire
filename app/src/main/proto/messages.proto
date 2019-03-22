@@ -1,3 +1,9 @@
+package model;
+
+option java_package = "com.faire.makers.model";
+option java_outer_classname = "Messages";
+
+
 message Brand {
   enum State {
     // The brand was newly created.
@@ -110,7 +116,7 @@ message Brand {
   optional bool local = 40;
 
   /** A quote from the owner of this brand. */
-  optional Quote ownerQuote = 60;
+  /** optional Quote ownerQuote = 60; **/
 
   /** An image, typically of the owner shown close to the owner's quote. */
   optional Image storyImage = 61;
@@ -121,7 +127,7 @@ message Brand {
   /** A list of instagram images. */
   repeated Image socialMediaImages = 63;
 
-  repeated Badge badges = 64;
+  /** repeated Badge badges = 64; **/
 
   /**
    * Some brands have intrinsic lead times (even when not back-ordered).
@@ -187,7 +193,7 @@ message Brand {
    * Empty is there is no retailer in the session, the frontend must re-fetch this brand before
    * going through flows that require this information.
    */
-  repeated PaymentTerm availableTerms = 59;
+  /** repeated PaymentTerm availableTerms = 59; **/
 
   /** Is this the first order for this brand and retailer? */
   optional bool isFirstOrder = 72;
@@ -211,7 +217,7 @@ message Brand {
   optional int64 lastProductAddedAt = 104;
   optional bool hasNewProducts = 105;
 
-  repeated Membership memberships = 101;
+  /** repeated Membership memberships = 101; **/
 
   optional int64 elevateCommissionBps = 103;
 
@@ -240,7 +246,7 @@ message Brand {
   /** If this flag is set, the lead time estimates are not computed automatically. */
   optional bool overrideLeadTimeEstimates = 115;
 
-  optional ShipWithFairePreference shipWithFairePreference = 116;
+  /** optional ShipWithFairePreference shipWithFairePreference = 116; **/
 
   optional int64 vacationStartDate = 118;
 
@@ -254,11 +260,11 @@ message Brand {
 
   optional int64 returnOrdersDiscountBps = 128;
 
-  optional BrandReviewsSummary brandReviewsSummary = 129;
+  /** optional BrandReviewsSummary brandReviewsSummary = 129; **/
 
   optional int64 version = 149;
   optional bool canSetPackagingAndHandlingCosts = 152;
-  optional Shipment.ShippingLabelPrintingPreference shippingLabelPrintingPreference = 153;
+  /** optional Shipment.ShippingLabelPrintingPreference shippingLabelPrintingPreference = 153; **/
 }
 
 message Color {
@@ -318,7 +324,7 @@ message ProductOption {
   optional int64 availableUnits = 15;
 
   /** The measurements of this specific option. */
-  optional Measurements measurements = 16;
+  /** optional Measurements measurements = 16; **/
 
   /** The SKU number assigned to this product option by the brand for testers. */
   optional string testerBrandCode = 18;
@@ -332,7 +338,7 @@ message Product {
   optional string token = 1;
 
   /** To be used only internal by the server, not for external APIs. */
-  optional int64 id = 22 [redacted = true];
+  /** optional int64 id = 22 [redacted = true]; **/
 
   /** We expose the version for caching purposes. */
   optional int64 version = 30;
@@ -362,21 +368,21 @@ message Product {
   /** Also known as case size or case quantity. This is the unit size that this product ships in. */
   optional int64 unitMultiplier = 9;
   optional string url = 10;
-  optional Measurements measurements = 11;
+  /** optional Measurements measurements = 11; **/
   repeated string categories = 13;
   repeated ProductOption options = 14;
-  optional int64 amazonReviewCount = 15 [redacted = true];
-  optional string amazonUrl = 16 [redacted = true];
+  /** optional int64 amazonReviewCount = 15 [redacted = true]; **/
+  /** optional string amazonUrl = 16 [redacted = true]; **/
   optional int64 lowestOnlinePriceCents = 24;
   repeated Image images = 17;
-  optional bool manualRecommendation = 18 [redacted = true];
-  repeated RecommenderType recommenders = 19 [redacted = true];
+  /** optional bool manualRecommendation = 18 [redacted = true]; **/
+  /** repeated RecommenderType recommenders = 19 [redacted = true]; **/
 
   /** A score we use for globally ranking products. */
-  optional int64 score = 20 [redacted = true];
+  /** optional int64 score = 20 [redacted = true]; **/
 
   /** Used to experiment with different scoring. */
-  optional int64 newScore = 29 [redacted = true];
+  /** optional int64 newScore = 29 [redacted = true]; **/
 
   /** Whether the customer has favorited this product. */
   optional bool favorite = 21;
@@ -408,7 +414,7 @@ message Product {
   optional bool custom = 34;
 
   optional int64 createdAt = 50;
-  optional int64 updatedAt = 51 [redacted = true];
+  /** optional int64 updatedAt = 51 [redacted = true]; **/
 
   // Tags are out of order, next tag is 34.
 }
@@ -482,6 +488,10 @@ message Category {
   optional bool isFeatured = 5;
 
   optional string token = 6;
+}
+
+message Categories {
+    repeated Category categories = 1;
 }
 
 enum SortOrder {
