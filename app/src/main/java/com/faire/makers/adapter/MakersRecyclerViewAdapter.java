@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.faire.makers.R;
-import com.faire.makers.model.Messages.Category;
+import com.faire.makers.model.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +67,7 @@ public class MakersRecyclerViewAdapter extends RecyclerView.Adapter<MakersRecycl
         }
 
         void updateUI(){
-            txtCategory.setText(category.getName());
+            txtCategory.setText(category.name);
         }
 
     }

@@ -2,7 +2,7 @@ package com.faire.makers.utils;
 
 import android.util.Log;
 
-import com.faire.makers.model.Messages.*;
+import com.faire.makers.model.Category;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
