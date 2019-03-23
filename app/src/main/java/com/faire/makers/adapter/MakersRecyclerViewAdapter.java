@@ -5,24 +5,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.faire.makers.R;
 import com.faire.makers.model.Brand;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MakersRecyclerViewAdapter extends RecyclerView.Adapter<MakersRecyclerViewAdapter.ViewHolder> {
 
-    public interface OnMakerSelectedListner {
-        void onCategorySelected(Brand brand);
+    public interface OnMakerSelectedListener {
+        void onMakerSelected(Brand brand);
     }
 
     private List<Brand> makers = new ArrayList<>();
-    private OnMakerSelectedListner listener;
+    private OnMakerSelectedListener listener;
 
-    public MakersRecyclerViewAdapter(@NonNull OnMakerSelectedListner listener) {
+    public MakersRecyclerViewAdapter(@NonNull OnMakerSelectedListener listener) {
         this.listener = listener;
     }
 
@@ -59,15 +62,30 @@ public class MakersRecyclerViewAdapter extends RecyclerView.Adapter<MakersRecycl
 
         private Brand brand;
         private TextView txtName;
+        private TextView txtCategories;
+        private ImageView imgBrand;
+        private Button btnProducts;
 
         private ViewHolder(View view) {
             super(view);
             txtName = view.findViewById(R.id.txtName);
-            view.setOnClickListener(v -> listener.onCategorySelected(brand));
+            txtCategories = view.findViewById(R.id.txtCategories);
+            imgBrand = view.findViewById(R.id.imgBrand);
+            btnProducts = view.findViewById(R.id.btnProducts);
         }
 
         void updateUI() {
             txtName.setText(brand.name);
+            txtCategories.setText(brand.getCategories());
+            if (brand.images != null && brand.images[0] != null) {
+                Picasso.get()
+                        .load(brand.images[0].url)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.placeholder)
+                        .into(imgBrand);
+            }
+            btnProducts.setOnClickListener(v -> listener.onMakerSelected(brand));
+
         }
 
     }

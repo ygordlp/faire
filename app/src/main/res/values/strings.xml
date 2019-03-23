@@ -2,4 +2,12 @@
     <string name="app_name">Faire</string>
     <string name="lbl_not_set">NOT SET</string>
     <string name="lbl_categories">Categories</string>
+    <string name="lbl_search_for_makers">Search for Makers</string>
+    <string name="lbl_loading">LOADING…</string>
+    <string name="lbl_see_products">SEE PRODUCTS</string>
+    <string name="msg_no_makers_found">No Makers found</string>
+    <string name="lbl_buy">BUY</string>
+    <string name="lbl_products">Products</string>
+    <string name="lbl_makers">Makers</string>
+    <string name="lbl_no_products_found">No products found</string>
 </resources>

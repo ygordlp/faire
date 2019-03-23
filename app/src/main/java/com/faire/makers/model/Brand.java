@@ -14,4 +14,29 @@ public class Brand {
     public String made_in;
     public String made_in_state;
     public String made_in_city;
+
+    private String categoriesString;
+
+    public String getCategories(){
+        if(categoriesString != null){
+            return categoriesString;
+        }
+
+        if(categories == null || categories.length == 0){
+            categoriesString = "";
+        } else {
+            StringBuffer sb = new StringBuffer();
+
+            for(String s : categories){
+                sb.append(s);
+                sb.append(", ");
+            }
+
+            String temp = sb.toString();
+            categoriesString = temp.substring(0, temp.length() - 2);
+        }
+
+
+        return categoriesString;
+    }
 }

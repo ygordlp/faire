@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context=".activity.CategoriesActivity">
 
     <!-- Header -->
@@ -19,7 +18,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="12dp"
             android:src="@drawable/logo" />
 
         <LinearLayout
@@ -38,16 +37,17 @@
 
             <EditText
                 android:id="@+id/txtSearch"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:ems="10"
-                android:nextFocusUp="@id/txtSearch"
-                android:nextFocusLeft="@id/txtSearch"
                 android:fontFamily="@font/light"
-                android:hint="Search for Makers"
-                android:inputType="textPersonName"
+                android:hint="@string/lbl_search_for_makers"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:nextFocusLeft="@id/txtSearch"
+                android:nextFocusUp="@id/txtSearch"
                 android:padding="4dp"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
@@ -88,20 +88,44 @@
 
     </RelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:indeterminateOnly="true" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/categoriesList"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
         android:layout_height="0dp"
-        tools:context=".fragment.TransformersFragment"
-        tools:listitem="@layout/category_item" />
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/categoriesList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activity.CategoriesActivity"
+            tools:listitem="@layout/category_item" />
+
+        <LinearLayout
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/light"
+                android:text="@string/lbl_loading"
+                android:layout_marginBottom="8dp"
+                android:textSize="14dp" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:indeterminateOnly="true" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
 </LinearLayout>
