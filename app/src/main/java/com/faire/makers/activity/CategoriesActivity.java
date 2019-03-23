@@ -1,26 +1,31 @@
 package com.faire.makers.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.faire.makers.R;
-import com.faire.makers.adapter.MakersRecyclerViewAdapter;
+import com.faire.makers.adapter.CategoriesRecyclerViewAdapter;
 import com.faire.makers.model.Category;
 import com.faire.makers.utils.FaireAPI;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MakersRecyclerViewAdapter.OnCategorySelectedListner {
+public class CategoriesActivity extends AppCompatActivity implements CategoriesRecyclerViewAdapter.OnCategorySelectedListner, TextView.OnEditorActionListener {
+
+    public static final String TAG = "CategoriesActivity";
 
     private RecyclerView recyclerView;
-    private ProgressBar progressBar;
-    private MakersRecyclerViewAdapter adapter;
+    private View progressBar;
+    private CategoriesRecyclerViewAdapter adapter;
+    private TextView txtSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +34,11 @@ public class MainActivity extends AppCompatActivity implements MakersRecyclerVie
 
         recyclerView = findViewById(R.id.categoriesList);
         progressBar = findViewById(R.id.progressBar);
+        txtSearch = findViewById(R.id.txtSearch);
 
-        adapter = new MakersRecyclerViewAdapter(this);
+        txtSearch.setOnEditorActionListener(this);
+
+        adapter = new CategoriesRecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setVisibility(View.INVISIBLE);
@@ -41,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements MakersRecyclerVie
     }
 
     private void onCategoriesLoaded(List<Category> categories) {
+        Log.d(TAG, "onCategoriesLoaded");
         recyclerView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
         adapter.setCategories(categories);
@@ -49,8 +58,31 @@ public class MainActivity extends AppCompatActivity implements MakersRecyclerVie
 
     @Override
     public void onCategorySelected(Category category) {
-        //TODO: Use category for search;
-        Toast.makeText(this, category.name, Toast.LENGTH_SHORT).show();
+        if (category == null || category.name == null || category.name.isEmpty()) {
+            Log.e(TAG, "onCategoriesLoaded: invalid category name");
+        }
+
+        startSearch(category.name);
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        String searchParam = txtSearch.getText().toString().trim();
+        if (!searchParam.isEmpty()) {
+            startSearch(searchParam);
+        }
+        return true;
+    }
+
+    private void startSearch(String searchParam) {
+        Log.d(TAG, "startSearch: " + searchParam);
+        if (searchParam == null || searchParam.trim().isEmpty()) {
+            Log.e(TAG, "Empty or null search parameter");
+        } else {
+            Intent intent = new Intent(this, MakersActivity.class);
+            intent.putExtra(MakersActivity.EXTRA_SEARCH_PARAM, searchParam);
+            startActivity(intent);
+        }
     }
 
     /**

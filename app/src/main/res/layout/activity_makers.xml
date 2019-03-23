@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.CategoriesActivity">
+    tools:context=".activity.MakersActivity">
 
     <!-- Header -->
     <LinearLayout
@@ -14,44 +14,19 @@
         android:orientation="horizontal"
         android:padding="8dp">
 
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_left" />
+
         <ImageView
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/logo" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/borders"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:src="@drawable/ic_search" />
-
-            <EditText
-                android:id="@+id/txtSearch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:fontFamily="@font/light"
-                android:hint="@string/lbl_search_for_makers"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:nextFocusLeft="@id/txtSearch"
-                android:nextFocusUp="@id/txtSearch"
-                android:padding="4dp"
-                android:textColor="@color/colorPrimaryDark" />
-        </LinearLayout>
-
 
     </LinearLayout>
 
@@ -70,7 +45,7 @@
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/header_image" />
+            android:src="@drawable/header_makers" />
 
         <View
             android:layout_width="match_parent"
@@ -82,7 +57,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="24dp"
             android:fontFamily="@font/bold"
-            android:text="@string/lbl_categories"
+            android:text="@string/lbl_makers"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
@@ -94,11 +69,11 @@
         android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/categoriesList"
+            android:id="@+id/makersList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".activity.CategoriesActivity"
-            tools:listitem="@layout/category_item" />
+            tools:context=".activity.MakersActivity"
+            tools:listitem="@layout/maker_item" />
 
         <LinearLayout
             android:id="@+id/progressBar"
@@ -111,9 +86,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="@font/light"
                 android:text="@string/lbl_loading"
-                android:layout_marginBottom="8dp"
                 android:textSize="14dp" />
 
             <ProgressBar
@@ -124,8 +99,5 @@
                 android:focusableInTouchMode="true"
                 android:indeterminateOnly="true" />
         </LinearLayout>
-
     </RelativeLayout>
-
-
 </LinearLayout>
