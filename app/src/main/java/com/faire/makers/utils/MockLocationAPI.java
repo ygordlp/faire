@@ -3,6 +3,7 @@ package com.faire.makers.utils;
 import android.content.res.Resources;
 import android.util.Log;
 
+import com.faire.makers.R;
 import com.faire.makers.model.Brand;
 
 import java.io.IOException;
@@ -20,6 +21,8 @@ public class MockLocationAPI extends LocationAPI {
 
     private static final String TAG = "MockLocationAPI";
 
+    private static LocationAPI instance;
+
     /**
      * To generate a random distance from the given location.
      **/
@@ -36,13 +39,12 @@ public class MockLocationAPI extends LocationAPI {
 
     }
 
-    @Override
-    public LocationAPI getInstance() {
-        if (this.instance == null) {
-            this.instance = new MockLocationAPI();
+    public static LocationAPI getInstance() {
+        if (instance == null) {
+            instance = new MockLocationAPI();
         }
 
-        return this.instance;
+        return instance;
     }
 
     /**
@@ -52,32 +54,14 @@ public class MockLocationAPI extends LocationAPI {
      */
     private List<Brand> getAllBrands() {
         if (allBrands == null) {
-            //Loads all brands from local JSON in assets;
-            String json = "";
-            try {
-                InputStream is = Resources.getSystem().getAssets().open("brands.json");
-                int size = is.available();
-                byte[] buffer = new byte[size];
-                is.read(buffer);
-                is.close();
-                json = new String(buffer, "UTF-8");
-            } catch (IOException ex) {
-                Log.e(TAG, "Error loading mock brands from json: " + ex.getMessage());
-            }
-
-            if (json == null || json.isEmpty()) {
-                Log.e(TAG, "Null or empty mock brands json");
-                allBrands = new ArrayList<>();
-            } else {
-                allBrands = Parser.parseBrands(json);
-            }
+            allBrands = new FaireAPI().searchForMakers(" ");
         }
 
         return allBrands;
     }
 
     @Override
-    public List<Brand> getMakerNearby(long lat, long lon) {
+    public List<Brand> getMakerNearby(double lat, double lon) {
         List<Brand> all = getAllBrands();
         int h = all.size() / 2;
         int s = (h > 10) ? 10 : h;
@@ -91,7 +75,8 @@ public class MockLocationAPI extends LocationAPI {
 
             //Mock brand location if not mocked yet
             if (brand.latidude == 0) {
-                long delta = RandomGen.getRandomInt(DELTA_MIN, DELTA_MAX);
+                int iDelta = RandomGen.getRandomInt(DELTA_MIN, DELTA_MAX);
+                double delta = (double) iDelta / 100.0;
                 brand.latidude = lat + delta;
                 brand.longitude = lon + delta;
             }

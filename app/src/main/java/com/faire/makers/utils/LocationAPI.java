@@ -10,15 +10,6 @@ import java.util.List;
  */
 public abstract class LocationAPI {
 
-    protected LocationAPI instance;
-
-    /**
-     * Location API must be a singleton.
-     *
-     * @return Location API instance.
-     */
-    public abstract LocationAPI getInstance();
-
     /**
      * Gets the makers nearby the given GPS coordinates.
      *
@@ -26,5 +17,5 @@ public abstract class LocationAPI {
      * @param lon Longitude
      * @return The list of brands found nearby.
      */
-    public abstract List<Brand> getMakerNearby(long lat, long lon);
+    public abstract List<Brand> getMakerNearby(double lat, double lon);
 }

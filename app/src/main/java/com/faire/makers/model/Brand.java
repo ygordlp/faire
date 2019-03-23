@@ -17,8 +17,8 @@ public class Brand {
     public String made_in;
     public String made_in_state;
     public String made_in_city;
-    public long latidude;
-    public long longitude;
+    public double latidude;
+    public double longitude;
 
     private String categoriesString;
 
