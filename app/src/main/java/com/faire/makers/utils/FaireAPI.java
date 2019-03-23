@@ -82,10 +82,7 @@ public class FaireAPI {
             if (response.isSuccessful()) {
                 String body = response.body().string();
                 if (body != null) {
-                    JSONObject obj = new JSONObject(body);
-                    String brandsJson = obj.getJSONArray("brands").toString();
-                    Brand[] brands = gson.fromJson(brandsJson, Brand[].class);
-                    result = Arrays.asList(brands);
+                    result = Parser.parseBrands(body);
                 }
             }
 

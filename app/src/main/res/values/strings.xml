@@ -10,4 +10,8 @@
     <string name="lbl_products">Products</string>
     <string name="lbl_makers">Makers</string>
     <string name="lbl_no_products_found">No products found</string>
+    <string name="lbl_find_by_category">Find by Category</string>
+    <string name="lbl_find_makers_near_you">Find Makers Near You</string>
+    <string name="lbl_welcome_to_faire">Welcome to Faire</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

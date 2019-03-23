@@ -1,5 +1,8 @@
 package com.faire.makers.model;
 
+/**
+ * POJO for Image.
+ */
 public class Image {
 
     public static final String TYPE_DEFAULT_BRAND = "DEFAULT_BRAND";

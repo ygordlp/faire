@@ -14,4 +14,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="FaireButton">
+        <item name="fontFamily">@font/bold</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
 </resources>

@@ -1,5 +1,8 @@
 package com.faire.makers.model;
 
+/**
+ * POJO for Brand.
+ */
 public class Brand {
 
     public boolean active;
@@ -14,9 +17,16 @@ public class Brand {
     public String made_in;
     public String made_in_state;
     public String made_in_city;
+    public long latidude;
+    public long longitude;
 
     private String categoriesString;
 
+    /**
+     * Gets all categories listed for the brand.
+     *
+     * @return A single line with all brands listed separated by comma.
+     */
     public String getCategories(){
         if(categoriesString != null){
             return categoriesString;

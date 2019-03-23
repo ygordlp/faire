@@ -1,5 +1,8 @@
 package com.faire.makers.model;
 
+/**
+ * POJO for Category
+ */
 public class Category {
 
     public String name;

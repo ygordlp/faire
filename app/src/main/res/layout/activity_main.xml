@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".activity.CategoriesActivity">
+    tools:context=".activity.MainActivity">
 
-    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:layout_height="120dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_width="80dp"
+            android:layout_width="120dp"
+            android:layout_height="24dp"
+            android:src="@drawable/logo"
+            android:tint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/logo" />
+            android:fontFamily="@font/bold"
+            android:paddingBottom="8dp"
+            android:text="@string/lbl_welcome_to_faire"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/light"
+            android:paddingBottom="32dp"
+            android:text="Find amazing Makers"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/borders"
+            android:background="@drawable/button_normal"
+            android:padding="8dp"
+            android:layout_marginBottom="24dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -52,80 +80,22 @@
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnCategory"
+            android:text="@string/lbl_find_by_category"
+            style="@style/FaireButton"
+            android:layout_marginBottom="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnNear"
+            android:text="@string/lbl_find_makers_near_you"
+            style="@style/FaireButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAccent" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/header_image" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="100dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="24dp"
-            android:fontFamily="@font/bold"
-            android:text="@string/lbl_categories"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/categoriesList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".activity.CategoriesActivity"
-            tools:listitem="@layout/category_item" />
-
-        <LinearLayout
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/light"
-                android:text="@string/lbl_loading"
-                android:layout_marginBottom="8dp"
-                android:textSize="14dp" />
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:indeterminateOnly="true" />
-        </LinearLayout>
-
-    </RelativeLayout>
 
 
 </LinearLayout>

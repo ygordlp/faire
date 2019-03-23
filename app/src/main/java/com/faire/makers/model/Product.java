@@ -1,5 +1,8 @@
 package com.faire.makers.model;
 
+/**
+ * POJO for Product.
+ */
 public class Product {
 
     public String name;

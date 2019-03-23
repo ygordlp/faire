@@ -18,25 +18,23 @@ import com.faire.makers.utils.FaireAPI;
 
 import java.util.List;
 
-public class CategoriesActivity extends AppCompatActivity implements CategoriesRecyclerViewAdapter.OnCategorySelectedListner, TextView.OnEditorActionListener {
+public class CategoriesActivity extends AppCompatActivity implements CategoriesRecyclerViewAdapter.OnCategorySelectedListner {
 
     public static final String TAG = "CategoriesActivity";
 
     private RecyclerView recyclerView;
     private View progressBar;
     private CategoriesRecyclerViewAdapter adapter;
-    private TextView txtSearch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_categories);
 
         recyclerView = findViewById(R.id.categoriesList);
         progressBar = findViewById(R.id.progressBar);
-        txtSearch = findViewById(R.id.txtSearch);
 
-        txtSearch.setOnEditorActionListener(this);
 
         adapter = new CategoriesRecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -65,14 +63,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesR
         startSearch(category.name);
     }
 
-    @Override
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        String searchParam = txtSearch.getText().toString().trim();
-        if (!searchParam.isEmpty()) {
-            startSearch(searchParam);
-        }
-        return true;
-    }
+
 
     private void startSearch(String searchParam) {
         Log.d(TAG, "startSearch: " + searchParam);
