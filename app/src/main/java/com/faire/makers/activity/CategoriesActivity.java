@@ -43,6 +43,8 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesR
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         progressBar.setVisibility(View.VISIBLE);
 
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
         new LoadCategoriesTask().execute();
     }
 

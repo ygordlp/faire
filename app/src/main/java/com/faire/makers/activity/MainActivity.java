@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         txtSearch.setOnEditorActionListener(this);
 
         findViewById(R.id.btnCategory).setOnClickListener(this);
+        findViewById(R.id.btnNear).setOnClickListener(this);
     }
 
     @Override

@@ -36,9 +36,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.faire.makers.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.ProductsActivity" />
-        <activity android:name=".activity.MakersActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProductsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MakersActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SplashActivity"
             android:noHistory="true"
